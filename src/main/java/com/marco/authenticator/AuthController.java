@@ -1,5 +1,8 @@
 package com.marco.authenticator;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +16,15 @@ public class AuthController {
 	
 	
 	@PostMapping(value="/auth")
-	public String getAuth(@RequestBody String data) {
-		String[] arrSplit = data.split("-----");
-		String email = arrSplit[0];
-		String pass = arrSplit[1];
+	public String getAuth(@RequestBody String data) throws UnsupportedEncodingException {
+		System.out.println(data);
+		URLDecoder.decode(data, "UTF-8");
+		System.out.println(data);
+		String[] dataArr = data.split("&");
+		String[] emailArr = dataArr[0].split("=");
+		String email = emailArr[1].replace("%40", "@");
+		String[] passArr = dataArr[1].split("=");
+		String pass = passArr[1];
 		final String apiUrl = "http://localhost:8080/api/users/"+email;
 		RestTemplate restTemplate = new RestTemplate();
 		String results = restTemplate.getForObject(apiUrl, String.class);
