@@ -19,7 +19,7 @@ public class AuthController {
 	public String getAuth(@RequestBody String data) throws UnsupportedEncodingException {
 		System.out.println("MARCO MARCO MARCO TEST TEST TEST");
 		System.out.println(data);
-		URLDecoder.decode(data, "UTF-8");
+		//URLDecoder.decode(data, "UTF-8");
 		System.out.println(data);
 		String[] dataArr = data.split("&");
 		String[] emailArr = dataArr[0].split("=");
