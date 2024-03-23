@@ -25,7 +25,7 @@ public class AuthController {
 		String email = emailArr[1].replace("%40", "@");
 		String[] passArr = dataArr[1].split("=");
 		String pass = passArr[1];
-		final String apiUrl = "http://localhost:8080/api/users/"+email;
+		final String apiUrl = "https://authenticator.happyforest-825d7b85.northeurope.azurecontainerapps.io:8080/api/users/"+email;
 		RestTemplate restTemplate = new RestTemplate();
 		String results = restTemplate.getForObject(apiUrl, String.class);
 		if(results!= null && results.contains(pass)) {
