@@ -17,6 +17,7 @@ public class AuthController {
 	
 	@PostMapping(value="/auth")
 	public String getAuth(@RequestBody String data) throws UnsupportedEncodingException {
+		System.out.println("MARCO MARCO MARCO TEST TEST TEST");
 		System.out.println(data);
 		URLDecoder.decode(data, "UTF-8");
 		System.out.println(data);
