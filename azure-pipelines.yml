@@ -7,7 +7,9 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  name: LinuxSelfHosted
+
+steps:
 
 - task: Maven@3
   inputs:
@@ -23,3 +25,4 @@ pool:
     mavenVersionOption: 'Path'
     mavenDirectory: '/opt/maven/apache-maven-3.9.6'
     mavenSetM2Home: true
+
