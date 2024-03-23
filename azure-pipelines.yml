@@ -26,3 +26,16 @@ steps:
     mavenDirectory: '/opt/maven/apache-maven-3.9.6'
     mavenSetM2Home: true
 
+- task: AzureContainerApps@1
+  inputs:
+    appSourcePath: '$(apppath)'
+    azureSubscription: '$(azsub)'
+    acrName: '$(registryname)'
+    acrUsername: '$(registryname)'
+    acrPassword: '$(registrypass)'
+    containerAppName: '$(containername)'
+    resourceGroup: 'platformRG'
+    dockerfilePath: ''
+    containerAppEnvironment: '$(containerenv)'
+    targetPort: '8081'
+    ingress: 'external'
