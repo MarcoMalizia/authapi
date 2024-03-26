@@ -17,10 +17,8 @@ public class AuthController {
 	
 	@PostMapping(value="/auth")
 	public String getAuth(@RequestBody String data) throws UnsupportedEncodingException {
-		System.out.println("MARCO MARCO MARCO TEST TEST TEST");
 		System.out.println(data);
 		//URLDecoder.decode(data, "UTF-8");
-		System.out.println(data);
 		String[] dataArr = data.split("&");
 		String[] emailArr = dataArr[0].split("=");
 		String email = emailArr[1].replace("%40", "@");
@@ -35,7 +33,7 @@ public class AuthController {
 		final String apiUrl = "https://userapi.happyforest-825d7b85.northeurope.azurecontainerapps.io/api/users/"+email;
 		RestTemplate restTemplate = new RestTemplate();
 		String results = restTemplate.getForObject(apiUrl, String.class);
-		if(results!= null && results.equals(pass)) {
+		if(results!= null && results.equals(pass.replaceAll("\\P{Print}",""))) {
 			return "Authorized";
 		}else {
 			return "Unauthorized";
