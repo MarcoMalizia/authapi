@@ -33,7 +33,7 @@ public class AuthController {
 		final String apiUrl = "https://userapi.happyforest-825d7b85.northeurope.azurecontainerapps.io/api/users/"+email;
 		RestTemplate restTemplate = new RestTemplate();
 		String results = restTemplate.getForObject(apiUrl, String.class);
-		if(results!= null && results.equals(pass.replaceAll("\\P{Print}",""))) {
+		if(results!= null && results.contains(pass)) {
 			return "Authorized";
 		}else {
 			return "Unauthorized";
