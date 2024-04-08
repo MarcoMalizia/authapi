@@ -25,7 +25,7 @@ public class AuthController {
 		String[] passArr = dataArr[1].split("=");
 		String pass = passArr[1];
 		System.out.println("Email: "+email);
-		System.out.println("Password: "+password);
+		System.out.println("Password: "+pass);
 		final String apiUrl = "https://userapi.happyforest-825d7b85.northeurope.azurecontainerapps.io/api/users/"+email;
 		RestTemplate restTemplate = new RestTemplate();
 		String results = restTemplate.getForObject(apiUrl, String.class);
