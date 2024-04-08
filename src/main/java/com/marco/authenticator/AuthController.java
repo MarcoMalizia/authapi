@@ -29,6 +29,7 @@ public class AuthController {
 		final String apiUrl = "https://userapi.happyforest-825d7b85.northeurope.azurecontainerapps.io/api/users/"+email;
 		RestTemplate restTemplate = new RestTemplate();
 		String results = restTemplate.getForObject(apiUrl, String.class);
+		System.out.println(results);
 		if(results!= null && results.contains(pass)) {
 			System.out.println("Chiamata API effettuata con successo, utente autorizzato");
 			return "Authorized";
