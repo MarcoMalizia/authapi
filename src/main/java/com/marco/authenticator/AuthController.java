@@ -24,14 +24,15 @@ public class AuthController {
 		String email = emailArr[1].replace("%40", "@");
 		String[] passArr = dataArr[1].split("=");
 		String pass = passArr[1];
-		System.out.println("Email: "+email);
-		System.out.println("Password: "+pass);
+		//System.out.println("Email: "+email);
+		//System.out.println("Password: "+pass);
 		final String apiUrl = "https://userapi.happyforest-825d7b85.northeurope.azurecontainerapps.io/api/users/"+email;
 		RestTemplate restTemplate = new RestTemplate();
 		String results = restTemplate.getForObject(apiUrl, String.class);
+		System.out.println("Chiamata al DB effettuata con successo");
 		System.out.println(results);
 		if(results!= null && results.contains(pass)) {
-			System.out.println("Chiamata API effettuata con successo, utente autorizzato");
+			//System.out.println("Chiamata API effettuata con successo, utente autorizzato");
 			return "Authorized";
 		}else {
 			System.out.println("Chiamata API effettuata con successo, utente non autorizzato");
